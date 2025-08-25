@@ -1,0 +1,50 @@
+body {
+    background-color: gray;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 50px;
+    gap: 10px; /* space between textbox and button */
+}
+
+label {
+    font-size: 18px;
+    color: rgb(12, 10, 10);
+    margin-right: 10px;
+}
+
+input[type="text"] {
+    width: 600px;
+    height: 30px;
+    padding: 5px 10px;
+    border: 2px solid #121010;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+input[type="button"] {
+    width: 60px; /* slightly larger than 30 for better UX */
+    height: 40px;
+    padding: 5px 10px;
+    border: 2px solid #030202;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+
+}
+
+input[type="button"]:hover {
+    background-color: white;
+    display: "Add Photo";
+}
+
+

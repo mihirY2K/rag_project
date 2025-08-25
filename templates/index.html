@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <title>RAG Model</title>
+</head>
+<body>
+  <h1>RAG Model</h1>
+
+  <div class="input-container">
+    <label for="fname">Ask a question:</label>
+    <input type="text" id="fname" name="fname" placeholder="Type your question here">
+   
+        <input type="button" value="Go" id="submitBtn">
+        <input type="file" id = "file" name="file" multiple>
+        <button type="submit">Upload</button>
+    
+  </div>
+ 
+  <script src="{{ url_for('static', filename='index.js') }}"></script>
+</body>
+</html>

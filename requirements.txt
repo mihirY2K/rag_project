@@ -1,0 +1,17 @@
+# Core packages
+langchain==0.1.16
+langchain-core==0.1.37
+langchain-openai==0.0.2
+langchain-pinecone==0.0.3
+
+# Embeddings and LLMs
+openai
+pinecone-client
+
+# PDF support
+PyMuPDF
+
+# Utilities
+python-dotenv
+tiktoken
+pydantic==1.10.8
