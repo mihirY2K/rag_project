@@ -26,23 +26,23 @@ def ask():
     import os
     from werkzeug.utils import secure_filename
 
-    # 1. Load API Key
+    
     load_dotenv()
     OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
-    # 2. Get the uploaded file and question
+    # Get the uploaded file and question
     uploaded_file = request.files.get("file")
     question = request.form.get("text")
     if not uploaded_file or not question:
         return jsonify({"error": "Missing file or question"}), 400
 
-    # 3. Save file temporarily
+    # Save file temporarily
     filename = secure_filename(uploaded_file.filename)
     filepath = os.path.join("uploads", filename)
     os.makedirs("uploads", exist_ok=True)
     uploaded_file.save(filepath)
 
-    # 4. Extract text from PDF
+    #  Extract text from PDF
     try:
         doc = fitz.open(filepath)
         text = ""
@@ -52,11 +52,11 @@ def ask():
     except Exception as e:
         return jsonify({"error": f"PDF reading error: {str(e)}"}), 500
 
-    # 5. Chunk text
+    #  Chunk text
     text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=20)
     documents = text_splitter.split_text(text)
 
-    # 6. Vector store setup
+    #  Vector store setup
     try:
         embeddings = OpenAIEmbeddings()
         index_name = "rag-first"  # you can make this dynamic if needed
@@ -64,7 +64,7 @@ def ask():
     except Exception as e:
         return jsonify({"error": f"Vector store error: {str(e)}"}), 500
 
-    # 7. RAG chain setup
+    #  RAG chain setup
     model = ChatOpenAI(openai_api_key=OPENAI_API_KEY, model="gpt-3.5-turbo")
     parser = StrOutputParser()
     prompt = ChatPromptTemplate.from_template("""
